@@ -1,0 +1,64 @@
+object FPWebModule1: TFPWebModule1
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  OldCreateOrder = False
+  Actions = <  
+    item
+      Name = 'index'
+      Default = True
+      OnRequest = indexRequest
+      Template.AllowTagParams = False
+    end  
+    item
+      Name = 'novo'
+      Default = False
+      Template.AllowTagParams = False
+    end  
+    item
+      Name = 'select'
+      Default = False
+      Template.AllowTagParams = False
+    end>
+  CreateSession = False
+  CORS.Enabled = False
+  CORS.Options = [coAllowCredentials, coEmptyDomainToOrigin]
+  CORS.AllowedMethods = 'GET, PUT, POST, OPTIONS, HEAD'
+  CORS.AllowedOrigins = '*'
+  CORS.AllowedHeaders = 'x-requested-with, content-type, authorization'
+  CORS.MaxAge = 0
+  Height = 447
+  HorizontalOffset = 834
+  VerticalOffset = 219
+  Width = 328
+  object MySQL80Connection1: TMySQL80Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'lazarus'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3206'
+    )
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = 'localhsot'
+    SkipLibraryVersionCheck = False
+    Left = 167
+    Top = 110
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Action = caCommit
+    Database = MySQL80Connection1
+    Left = 163
+    Top = 221
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL80Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    Left = 162
+    Top = 331
+  end
+end
